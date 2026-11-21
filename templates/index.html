@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ── HERO: biometric orbit + developer deck ───────────────────────────── -->
+<section class="hero" aria-label="Today's overview">
+  <article class="orbit-card glass">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">LIVE BIOMETRIC ORBIT</span>
+        <h1>Today's Discipline</h1>
+      </div>
+      <span class="live-badge"><span></span> LIVE</span>
+    </div>
+
+    <div class="orbit-wrap">
+      <svg class="orbit" viewBox="0 0 260 260" role="img" aria-label="Daily completion and streak orbit">
+        <defs>
+          <linearGradient id="outerGradient" x1="20" y1="20" x2="240" y2="240" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#34D399"/><stop offset="1" stop-color="#059669"/>
+          </linearGradient>
+          <linearGradient id="innerGradient" x1="60" y1="60" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FDBA74"/><stop offset="1" stop-color="#F97316"/>
+          </linearGradient>
+          <filter id="ringGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <circle class="orbit__track" cx="130" cy="130" r="104"/>
+        <circle class="orbit__track orbit__track--inner" cx="130" cy="130" r="78"/>
+        <circle class="orbit__tick" cx="130" cy="130" r="118" stroke-dasharray="1 11"/>
+
+        <circle id="orbitOuter" class="orbit__progress orbit__progress--outer"
+                cx="130" cy="130" r="104" stroke="url(#outerGradient)" filter="url(#ringGlow)"
+                transform="rotate(-90 130 130)" stroke-dasharray="654" stroke-dashoffset="654"/>
+        <circle id="orbitInner" class="orbit__progress orbit__progress--inner"
+                cx="130" cy="130" r="78" stroke="url(#innerGradient)"
+                transform="rotate(-90 130 130)" stroke-dasharray="491" stroke-dashoffset="491"/>
+
+        <text id="ringPercent" class="orbit__percent" x="130" y="128" text-anchor="middle">0%</text>
+        <text class="orbit__caption" x="130" y="152" text-anchor="middle">TODAY COMPLETE</text>
+        <text id="ringCount" class="orbit__count" x="130" y="176" text-anchor="middle">0 / 0 HABITS</text>
+      </svg>
+      <span class="orbit__spark orbit__spark--one" aria-hidden="true"></span>
+      <span class="orbit__spark orbit__spark--two" aria-hidden="true"></span>
+    </div>
+
+    <div class="orbit-stats">
+      <div class="stat-tile stat-tile--flame">
+        <span class="stat-tile__icon" aria-hidden="true">🔥</span>
+        <div><strong id="activeStreak">0</strong><span>DAY ACTIVE STREAK</span></div>
+      </div>
+      <div class="stat-tile stat-tile--violet">
+        <span class="stat-tile__icon" aria-hidden="true">◈</span>
+        <div><strong id="longestStreak">0</strong><span>DAY PERSONAL BEST</span></div>
+      </div>
+      <div class="stat-tile stat-tile--emerald">
+        <span class="stat-tile__icon" aria-hidden="true">✓</span>
+        <div><strong id="totalCompletions">0</strong><span>LIFETIME CHECK-INS</span></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="profile-card glass">
+    <div class="profile-card__cover" role="img" aria-label="Dark productivity workspace banner"></div>
+    <div class="profile-card__body">
+      <img class="profile-card__avatar" src="{{ url_for('static', filename='assets/avatar.jpg') }}" alt="Raj Gautam">
+      <span class="status-chip" id="disciplineStatus"><span></span> ON TRACK</span>
+
+      <h2>{{ developer.name }}</h2>
+      <p class="profile-card__role">Full-Stack Developer · Discipline Systems</p>
+      <p class="profile-card__quote">“Build Unbreakable Streaks, Visualize Your Discipline.”</p>
+
+      <div class="profile-links">
+        <a href="mailto:{{ developer.email }}"><span aria-hidden="true">✉</span><span>{{ developer.email }}</span></a>
+        <a href="https://www.instagram.com/linux.userraj/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◎</span><span>{{ developer.instagram }}</span></a>
+        <a href="{{ developer.github }}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌘</span><span>github.com/Rg100152</span></a>
+      </div>
+
+      <div class="profile-card__foot">
+        <span>STUDIO STATUS</span>
+        <strong>MATRIX ONLINE</strong>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ── HABIT MATRIX ─────────────────────────────────────────────────────── -->
+<section class="section" aria-labelledby="habitsTitle">
+  <div class="section-head section-head--wide">
+    <div>
+      <span class="eyebrow">DAILY CHECK-IN MATRIX</span>
+      <h2 id="habitsTitle">Your habits</h2>
+      <p>One click. Zero friction. Watch the streak ignite.</p>
+    </div>
+    <span class="count-badge" id="habitCountBadge">0 ACTIVE</span>
+  </div>
+  <div class="habit-grid" id="habitGrid"></div>
+</section>
+
+<!-- ── HEATMAP + ANALYTICS ──────────────────────────────────────────────── -->
+<section class="section insight-grid" id="insights" aria-label="Consistency analytics">
+  <article class="panel glass heatmap-panel">
+    <div class="section-head section-head--wide">
+      <div>
+        <span class="eyebrow">90-DAY CONSISTENCY MATRIX</span>
+        <h2>Heatmap of show-ups</h2>
+        <p>Every square is a day. Brighter means more habits closed.</p>
+      </div>
+      <span class="panel-mark" aria-hidden="true">▦</span>
+    </div>
+    <div class="heatmap-scroll">
+      <div class="heatmap" id="heatmap" role="img" aria-label="90 day habit intensity heatmap"></div>
+    </div>
+    <div class="heatmap-foot">
+      <span id="heatmapSummary">—</span>
+      <div class="legend"><span>Less</span>
+        <i class="legend__cell lv-0"></i><i class="legend__cell lv-1"></i><i class="legend__cell lv-2"></i>
+        <i class="legend__cell lv-3"></i><i class="legend__cell lv-4"></i>
+        <span>More</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="panel glass analytics-panel">
+    <div class="section-head section-head--wide">
+      <div>
+        <span class="eyebrow">CATEGORY PULSE</span>
+        <h2>Where your focus goes</h2>
+        <p>Completion rate across the last 30 days.</p>
+      </div>
+      <span class="panel-mark panel-mark--violet" aria-hidden="true">◈</span>
+    </div>
+    <div class="category-bars" id="categoryBars"></div>
+    <div class="analytics-foot">
+      <div><span>ACTIVE HABITS</span><strong id="analyticHabits">0</strong></div>
+      <div><span>TODAY'S RATE</span><strong id="analyticToday">0%</strong></div>
+      <div><span>BEST RING</span><strong id="analyticBest">0%</strong></div>
+    </div>
+  </article>
+</section>
+
+{% endblock %}

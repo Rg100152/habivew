@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080C10">
+  <meta name="description" content="HabiView — build unbreakable streaks and visualize your discipline. A daily habit tracker by Raj Gautam.">
+  <title>HabiView · Streak &amp; Discipline Studio</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='assets/favicon.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/habiview.css') }}">
+</head>
+<body>
+  <div class="ambient ambient--emerald" aria-hidden="true"></div>
+  <div class="ambient ambient--violet" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <header class="topbar glass">
+    <a class="brand" href="/" aria-label="HabiView home">
+      <img src="{{ url_for('static', filename='assets/logo-habiview.svg') }}" alt="HabiView" class="brand__logo">
+    </a>
+
+    <div class="topbar__center">
+      <div class="today-chip">
+        <span class="today-chip__pulse" aria-hidden="true"></span>
+        <span id="todayLabel">Today</span>
+      </div>
+
+      <div class="top-progress" title="Today's completion">
+        <div class="top-progress__track"><div class="top-progress__fill" id="topProgressBar"></div></div>
+        <span class="top-progress__label" id="topProgressText">0 / 0</span>
+      </div>
+
+      <div class="filters" id="focusFilters" role="group" aria-label="Filter by focus">
+        <button class="filter is-active" type="button" data-filter="All">All</button>
+        <button class="filter" type="button" data-filter="Deep Work">Deep Work</button>
+        <button class="filter" type="button" data-filter="Health">Health</button>
+        <button class="filter" type="button" data-filter="Skill">Skill</button>
+      </div>
+    </div>
+
+    <div class="topbar__right">
+      <button class="btn btn--primary" type="button" id="openHabitModal">
+        <span class="btn__plus" aria-hidden="true">＋</span> New Habit
+      </button>
+      <a class="dev-pill" href="{{ developer.github }}" target="_blank" rel="noopener noreferrer" title="Raj Gautam on GitHub">
+        <span aria-hidden="true">👨‍💻</span> {{ developer.name }}
+      </a>
+    </div>
+  </header>
+
+  <main class="shell">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer shell">
+    <div class="footer__card glass">
+      <img class="footer__avatar" src="{{ url_for('static', filename='assets/avatar.jpg') }}" alt="Raj Gautam">
+      <div class="footer__identity">
+        <span class="eyebrow">ENGINEERED BY</span>
+        <h3>{{ developer.name }}</h3>
+        <p>Building calm, disciplined software — one unbroken streak at a time.</p>
+      </div>
+      <div class="footer__links">
+        <a href="mailto:{{ developer.email }}"><span aria-hidden="true">✉</span> {{ developer.email }}</a>
+        <a href="https://www.instagram.com/linux.userraj/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">◎</span> {{ developer.instagram }}</a>
+        <a href="{{ developer.github }}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌘</span> {{ developer.github }}</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>HabiView · Daily Habit, Streak &amp; Analytics Engine</span>
+      <span>Build Unbreakable Streaks, Visualize Your Discipline.</span>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="habitModal" hidden>
+    <div class="modal glass" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__head">
+        <div>
+          <span class="eyebrow">GROW YOUR MATRIX</span>
+          <h2 id="modalTitle">Add a new habit</h2>
+        </div>
+        <button class="icon-btn" type="button" id="closeHabitModal" aria-label="Close dialog">✕</button>
+      </div>
+      <form id="habitForm">
+        <label class="field">
+          <span>Habit name</span>
+          <input type="text" id="habitName" name="name" maxlength="60" required placeholder="e.g. 30Min Deep Reading">
+        </label>
+        <div class="field-row">
+          <label class="field">
+            <span>Focus area</span>
+            <select id="habitCategory" name="category">
+              <option value="Deep Work">Deep Work</option>
+              <option value="Health">Health</option>
+              <option value="Skill">Skill</option>
+            </select>
+          </label>
+          <label class="field field--icon">
+            <span>Icon</span>
+            <input type="text" id="habitIcon" name="icon" maxlength="4" placeholder="✦">
+          </label>
+        </div>
+        <p class="form-error" id="formError" role="alert"></p>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" type="button" id="cancelHabitModal">Cancel</button>
+          <button class="btn btn--primary" type="submit">Create habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script id="bootstrapData" type="application/json">{{ dashboard|default({})|tojson }}</script>
+  <script src="{{ url_for('static', filename='js/habiview.js') }}" defer></script>
+</body>
+</html>

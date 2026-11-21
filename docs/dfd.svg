@@ -1,0 +1,88 @@
+<svg width="1040" height="560" viewBox="0 0 1040 560" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HabiView Data Flow Diagram">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1040" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1118"/><stop offset="1" stop-color="#080C10"/>
+    </linearGradient>
+    <linearGradient id="emerald" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#34D399"/><stop offset="1" stop-color="#059669"/></linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrowE" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L10 5L0 10Z" fill="#10B981"/>
+    </marker>
+    <marker id="arrowV" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L10 5L0 10Z" fill="#8B5CF6"/>
+    </marker>
+    <marker id="arrowF" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L10 5L0 10Z" fill="#F97316"/>
+    </marker>
+  </defs>
+
+  <rect width="1040" height="560" rx="18" fill="url(#bg)" stroke="#10B981" stroke-opacity="0.28"/>
+  <text x="34" y="46" fill="#F8FAFC" font-family="system-ui,sans-serif" font-weight="900" font-size="22">HabiView · Data Flow Diagram</text>
+  <text x="34" y="68" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="11">DFD Level 0 — check-in to visual feedback in one request</text>
+
+  <!-- User entity -->
+  <rect x="34" y="188" width="150" height="96" rx="14" fill="#11171F" stroke="#F97316" stroke-opacity="0.5" stroke-width="1.5"/>
+  <text x="109" y="224" text-anchor="middle" fill="#FDBA74" font-family="system-ui,sans-serif" font-size="26">👤</text>
+  <text x="109" y="252" text-anchor="middle" fill="#F8FAFC" font-family="system-ui,sans-serif" font-weight="800" font-size="13">User / Raj</text>
+  <text x="109" y="270" text-anchor="middle" fill="#5C6B7A" font-family="ui-monospace,monospace" font-size="9">EXTERNAL ENTITY</text>
+
+  <!-- Browser UI -->
+  <rect x="254" y="168" width="212" height="136" rx="16" fill="#11171F" stroke="#F97316" stroke-opacity="0.6" stroke-width="1.6"/>
+  <text x="360" y="198" text-anchor="middle" fill="#FDBA74" font-family="ui-monospace,monospace" font-weight="800" font-size="10" letter-spacing="1.5">PROCESS · CLIENT</text>
+  <text x="360" y="226" text-anchor="middle" fill="#F8FAFC" font-family="system-ui,sans-serif" font-weight="800" font-size="15">Browser UI</text>
+  <text x="360" y="248" text-anchor="middle" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="10">Habit Cards · Ripple</text>
+  <text x="360" y="266" text-anchor="middle" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="10">Orbit Ring · Heatmap</text>
+  <text x="360" y="288" text-anchor="middle" fill="#5C6B7A" font-family="ui-monospace,monospace" font-size="9">HTML5 · CSS3 · Vanilla JS</text>
+
+  <!-- Flask API -->
+  <rect x="540" y="168" width="222" height="136" rx="16" fill="#11171F" stroke="#10B981" stroke-opacity="0.7" stroke-width="1.6" filter="url(#glow)"/>
+  <text x="651" y="198" text-anchor="middle" fill="#34D399" font-family="ui-monospace,monospace" font-weight="800" font-size="10" letter-spacing="1.5">PROCESS · SERVER</text>
+  <text x="651" y="226" text-anchor="middle" fill="#F8FAFC" font-family="system-ui,sans-serif" font-weight="800" font-size="15">Flask API + Streak Engine</text>
+  <text x="651" y="248" text-anchor="middle" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="10">/api/toggle/&lt;id&gt;</text>
+  <text x="651" y="266" text-anchor="middle" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="10">/api/habits · /api/analytics</text>
+  <text x="651" y="288" text-anchor="middle" fill="#5C6B7A" font-family="ui-monospace,monospace" font-size="9">Python 3 · SQLite3</text>
+
+  <!-- SQLite data store -->
+  <ellipse cx="906" cy="192" rx="62" ry="14" fill="#151D27" stroke="#8B5CF6" stroke-opacity="0.7" stroke-width="1.6"/>
+  <path d="M844 192V278C844 286 872 292 906 292C940 292 968 286 968 278V192" fill="#151D27" stroke="#8B5CF6" stroke-opacity="0.7" stroke-width="1.6"/>
+  <path d="M844 224C844 232 872 238 906 238C940 238 968 232 968 224" stroke="#8B5CF6" stroke-opacity="0.5"/>
+  <path d="M844 252C844 260 872 266 906 266C940 266 968 260 968 252" stroke="#8B5CF6" stroke-opacity="0.5"/>
+  <text x="906" y="285" text-anchor="middle" fill="#C4B5FD" font-family="ui-monospace,monospace" font-size="9">DATA STORE</text>
+  <text x="906" y="320" text-anchor="middle" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="10">habits · habit_logs</text>
+
+  <!-- Live output -->
+  <rect x="524" y="386" width="254" height="92" rx="14" fill="#11171F" stroke="#10B981" stroke-opacity="0.45" stroke-width="1.5"/>
+  <text x="651" y="416" text-anchor="middle" fill="#34D399" font-family="ui-monospace,monospace" font-weight="800" font-size="10" letter-spacing="1.2">INSTANT OUTPUT</text>
+  <text x="651" y="440" text-anchor="middle" fill="#F8FAFC" font-family="system-ui,sans-serif" font-weight="700" font-size="13">🔥 Streak ↑ · Ring 83→100%</text>
+  <text x="651" y="460" text-anchor="middle" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="10">Heatmap cell + category bars repaint</text>
+
+  <!-- Flows -->
+  <path d="M184 232H244" stroke="#F97316" stroke-width="2" marker-end="url(#arrowF)"/>
+  <text x="214" y="222" text-anchor="middle" fill="#FDBA74" font-family="ui-monospace,monospace" font-size="9">1-click</text>
+
+  <path d="M466 210H530" stroke="#10B981" stroke-width="2" marker-end="url(#arrowE)"/>
+  <text x="498" y="199" text-anchor="middle" fill="#34D399" font-family="ui-monospace,monospace" font-size="9">POST</text>
+
+  <path d="M530 272H466" stroke="#10B981" stroke-width="2" marker-end="url(#arrowE)"/>
+  <text x="498" y="291" text-anchor="middle" fill="#34D399" font-family="ui-monospace,monospace" font-size="9">JSON</text>
+
+  <path d="M762 212H838" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowV)"/>
+  <text x="800" y="201" text-anchor="middle" fill="#C4B5FD" font-family="ui-monospace,monospace" font-size="9">SQL write</text>
+
+  <path d="M838 264H762" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowV)"/>
+  <text x="800" y="283" text-anchor="middle" fill="#C4B5FD" font-family="ui-monospace,monospace" font-size="9">Read</text>
+
+  <path d="M651 304V376" stroke="#10B981" stroke-width="2" marker-end="url(#arrowE)"/>
+  <text x="664" y="344" fill="#34D399" font-family="ui-monospace,monospace" font-size="9">fresh state</text>
+
+  <path d="M524 432H418C390 432 380 424 380 308" stroke="#F97316" stroke-width="1.6" stroke-dasharray="5 5" marker-end="url(#arrowF)"/>
+  <text x="404" y="396" fill="#FDBA74" font-family="ui-monospace,monospace" font-size="9">repaint (no reload)</text>
+
+  <line x1="34" y1="510" x2="1006" y2="510" stroke="#94A3B8" stroke-opacity="0.15"/>
+  <circle cx="44" cy="532" r="5" fill="#F97316"/><text x="56" y="536" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="10">User flow</text>
+  <circle cx="170" cy="532" r="5" fill="#10B981"/><text x="182" y="536" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="10">API / JSON flow</text>
+  <circle cx="310" cy="532" r="5" fill="#8B5CF6"/><text x="322" y="536" fill="#8A9BAB" font-family="ui-monospace,monospace" font-size="10">Database flow</text>
+  <text x="1006" y="536" text-anchor="end" fill="#5C6B7A" font-family="ui-monospace,monospace" font-size="10">HabiView · Raj Gautam</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg width="420" height="56" viewBox="0 0 420 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HabiView — build unbreakable streaks">
+  <rect x="1" y="1" width="418" height="54" rx="13" fill="#0B1016" stroke="#10B981" stroke-opacity="0.4"/>
+  <circle cx="24" cy="28" r="7" fill="#10B981" opacity="0.18"/>
+  <path d="M24 19C24 19 30 24.5 30 30C30 34.4 27.3 38 24 38C20.7 38 18 34.4 18 30C18 27.2 19.6 24.6 21 23.2C21 26 22.4 27.2 23.2 27.2C22.6 23.2 24 19 24 19Z" fill="#10B981"/>
+  <text x="44" y="34" fill="#94A3B8" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15">$ ./habiview --streak</text>
+  <text x="216" y="34" fill="#34D399" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" font-weight="700">unbreakable_</text>
+  <rect x="355" y="21" width="9" height="16" fill="#34D399">
+    <animate attributeName="opacity" values="1;1;0;0" dur="1s" repeatCount="indefinite"/>
+  </rect>
+</svg>

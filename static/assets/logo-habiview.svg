@@ -1,0 +1,31 @@
+<svg width="240" height="50" viewBox="0 0 240 50" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HabiView logo">
+  <defs>
+    <linearGradient id="hv-flame" x1="16" y1="12" x2="31" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34D399"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="hv-orbit" x1="7" y1="7" x2="41" y2="43" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10B981"/>
+      <stop offset="0.6" stop-color="#10B981" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="hv-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Obsidian tile -->
+  <rect x="4" y="6" width="38" height="38" rx="11" fill="#0D131A" stroke="#10B981" stroke-opacity="0.55" stroke-width="1.6"/>
+  <!-- Orbit ring -->
+  <circle cx="23" cy="25" r="13.4" stroke="url(#hv-orbit)" stroke-width="1.5" stroke-dasharray="46 10" stroke-linecap="round" transform="rotate(-32 23 25)" opacity="0.9"/>
+  <!-- Emerald streak flame -->
+  <path d="M23 13.5C23 13.5 30 19.8 30 25.7C30 29.6 26.8 33 23 33C19.2 33 16 29.6 16 25.7C16 23.1 17.5 20.6 19 19.1C19 21.6 20.5 22.6 21.5 22.6C21 19.1 23 13.5 23 13.5Z" fill="url(#hv-flame)" filter="url(#hv-glow)"/>
+  <!-- Check tick in flame core -->
+  <path d="M20.4 26.2L22.3 28L26 23.9" stroke="#ECFDF5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Spark -->
+  <circle cx="36" cy="14" r="2.6" fill="#F97316" filter="url(#hv-glow)"/>
+
+  <!-- Wordmark -->
+  <text x="52" y="32" fill="#F8FAFC" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-weight="900" font-size="22" letter-spacing="0.4">Habi<tspan fill="#10B981">View</tspan></text>
+</svg>
